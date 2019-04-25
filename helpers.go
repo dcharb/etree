@@ -219,6 +219,9 @@ func escapeString(w *bufio.Writer, s string, m escapeMode) {
 		i += width
 		switch r {
 		case '&':
+			if m == escapeCanonicalText {
+				continue
+			}
 			esc = []byte("&amp;")
 		case '<':
 			esc = []byte("&lt;")
